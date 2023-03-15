@@ -6,7 +6,7 @@
 /*   By: arashido <avazbekrashidov6@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:16:14 by arashido          #+#    #+#             */
-/*   Updated: 2023/03/13 14:16:17 by arashido         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:30:36 by arashido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	sig_handler(int signalnbr)
 {
-	static int	i;
+	static char	c;
 	static int	bit;
 
 	if (signalnbr == SIGUSR1)
-		i = i | (0x01 << bit);
+		c = c | (1 << bit);
 	bit++;
 	if (bit == 8)
 	{
-		write(1, &i, 1);
+		write(1, &c, 1);
 		bit = 0;
-		i = 0;
+		c = 0;
 	}
 }
 
